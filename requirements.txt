@@ -1,0 +1,6 @@
+# Core library: Python standard library only.
+# Optional (service + service tests):
+fastapi>=0.110
+httpx>=0.27
+# Dev:
+pytest>=8.0

@@ -1,0 +1,20 @@
+# CI definition for model-compression-platform.
+# NOTE: this file lives in docs/ (not .github/workflows/) because the
+# push integration used for this repo cannot write workflow files.
+# Activate it by moving it to .github/workflows/ci.yml.
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - run: python -m pytest -q
+      - run: python examples/run_demo.py
